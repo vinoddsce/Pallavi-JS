@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asynchronous JavaScript</title>
+</head>
+
+<body>
+    <h1>Asynchronous JavaScript</h1>
+
+    <div id="container">
+        <p>Loading image .....</p>
+
+    </div>
+
+    <script>
+
+        setTimeout(() => {
+            var http = new XMLHttpRequest();
+
+            http.onload = function () {
+                if (http.status = 200) {
+                    console.log(http.response);
+                    document.getElementById("container").innerHTML = http.response;
+                } else {
+                    console.log("Error");
+                    document.getElementById("container").innerHTML = `<p>http.response</p>`;
+                }
+
+            }
+
+            http.open("GET", "https://images.pexels.com/photos/257360/pexels-photo-257360.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+            http.send();
+        }, 5000)
+
+
+    </script>
+</body>
+
+</html>
