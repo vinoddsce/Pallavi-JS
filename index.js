@@ -1,121 +1,100 @@
-// var firstName = "Pallavi";
-// var lastName = "Gowda";
-// var isMarried = false;
-// var yearOfBirth = 1999;
-// var designation = "Student";
+// Hoisting is a JavaScript mechanism where variables and function
+// declarations are moved to the top of their scope before code execution. 
 
-// function display() {
-//     console.log(firstName, lastName, isMarried, yearOfBirth, designation);
-// }
-// display();
+// console.log(a);
+// var a;
+// a = 100;
+// console.log(a);
 
-// Syntax: 
-// var obj_name OR ref_name = {
-//     key1: value1, 
-//     key2: value2, 
-//     ...
-//     keyn: valuen
+
+// console.log("sayHi", sayHi);
+
+// var sayHi = function () {
+//     console.log("Hi");
 // }
 
+// Closures, also known as lexical or function closures, are combinations
+// of functions bundled together with references to their surrounding state.
+// In other words, a closure give you access to an outer function’s scope from an
+// inner function outside of its original usage.
 
-// Default return 'undefined'
-// function sayHi() {
-// }
-// console.log(sayHi());
 
-
-// var vinod = {
-//     firstName: "Vinod",
-//     lastName: "Kumar",
-//     isMarried: false,
-//     yearOfBirth: 1990,
-//     designation: "Teacher",
-//     display: function () {
-//         console.log(this.firstName, this.lastName, this.isMarried, this.yearOfBirth, this.designation);
-//         // console.log(firstName, lastName, isMarried, yearOfBirth, designation);
+// function first() {
+//     console.log("first() called !!!!");
+//     function second() {
+//         console.log("second() called !!!!");
+//         function third() {
+//             console.log("third() called !!!!");
+//         }
+//         third();
 //     }
-// };
-
-// console.log(vinod.firstName);
-// console.log(vinod["lastName"]);
-// vinod.language = "JavaScript";
-// console.log(vinod.display());
-
-var pallavi = {
-    firstName: "Pallavi",
-    lastName: "Gowda",
-    isMarried: false,
-    yearOfBirth: 1999,
-    designation: "Student",
-    display: function () {
-        console.log(this.firstName, this.lastName, this.isMarried, this.yearOfBirth, this.designation);
-        // console.log(firstName, lastName, isMarried, yearOfBirth, designation);
-    }
-};
-
-// Hoisting 
-
-function outer() {
-    console.log("Outer!!!!", this);
-    function inner() {
-        console.log("Inner!!!!", this);
-    }
-    inner();
-}
-outer();
+//     second();
+//     console.log("first() end !!!!");
+// }
+// first();
 
 
-// Function Constructors
-var Person = function (firstName, lastName, isMarried, yearOfBirth, designation) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.isMarried = isMarried;
-    this.yearOfBirth = yearOfBirth;
-    this.designation = designation;
-    this.display = function () {
-        console.log(this.firstName, this.lastName, this.isMarried,
-            this.yearOfBirth, this.designation);
-    };
-    this.calculateAge = function (currentYear) {
-        console.log("Age: ", getAge(currentYear));
-        function getAge(year) {
-            return (year - this.yearOfBirth);
+
+// function first() {
+//     return function inner() {
+//         console.log("Returned Fun");
+//     };
+// }
+// var result = first();
+// // console.log(result);
+
+// result();
+
+
+
+
+// function main(value) {
+//     console.log("Value: ", value);
+// }
+
+// main(100);
+// main("Vinod");
+
+
+
+// function main(f) {
+//     f();
+// }
+
+// function printNumber() {
+//     console.log("Number");
+// }
+
+
+// function printString() {
+//     console.log("String");
+// }
+
+// main(printNumber);
+
+
+
+function math(option) {
+
+    var PI = 3.14;
+
+    if (option === 'add') {
+        return function add(a, b) {
+            return a + b;
         }
     }
+
+    if (option === 'square') {
+        return function square(a) {
+            return a * a;
+        }
+    }
+
+    return function multiplyByPI(n) {
+        return n * PI;
+    }
 }
 
-var vinod = new Person("Vinod", "Kumar", false, 1990, "Teacher");
-var john = new Person("John", "Smith", true, 1986, "Designer");
-
-// vinod.display();
-vinod.calculateAge(2019);
-
-
-// display(person);
-// function display(person) {
-//     console.log(person.firstName, person.lastName, person.isMarried,
-//         person.yearOfBirth, person.designation);
-// }
-
-
-// console.log(john);
-// console.log(vinod);
-
-// var age = 100;
-// window.age = 200;
-// console.log(alert("Hi, User !!!!"));
-
-
-// console.log(sayHi);
-// console.log(sayHello);
-
-// sayHi();
-// sayHello();
-
-// function sayHi() {
-//     console.log("Hi ");
-// }
-
-// var sayHello = function () {
-//     console.log("Hello ");
-// }
+var result = math('abc');
+console.log(result);
+console.log(result(100));
