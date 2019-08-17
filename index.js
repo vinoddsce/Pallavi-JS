@@ -7,7 +7,6 @@
 // function display() {
 //     console.log(firstName, lastName, isMarried, yearOfBirth, designation);
 // }
-
 // display();
 
 // Syntax: 
@@ -67,7 +66,6 @@ outer();
 
 
 // Function Constructors
-
 var Person = function (firstName, lastName, isMarried, yearOfBirth, designation) {
     this.firstName = firstName;
     this.lastName = lastName;
